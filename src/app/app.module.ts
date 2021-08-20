@@ -12,14 +12,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 import { TaskInputComponent } from './common/components/task-input/task-input.component';
 import { FormsModule } from '@angular/forms';
+import { SharedService } from 'src/shared/shared.service';
 
 @NgModule({
   declarations: [AppComponent, EditInputComponent, TaskInputComponent],
   imports: [
     BrowserModule,
+    PickerModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -31,7 +34,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     MatListModule,
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

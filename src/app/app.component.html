@@ -18,33 +18,19 @@
 </mat-toolbar>
 <mat-card>
   <div class="container-fluid">
-    <app-task-input> </app-task-input>
+    <app-task-input (getInputValue)="createTask($event)"> </app-task-input>
   </div>
   <mat-selection-list [multiple]="false">
     <div class="container-fluid">
-      <mat-list-option>
+      <mat-list-option *ngFor="let task of myData; let i = index">
         <div class="row task">
-          <div class="col-lg-6">This is task number One</div>
+          <div class="col-lg-6">{{ task.taskTitle }} {{ i }}</div>
           <div class="col-lg-6 timing">
-            19 august 2021
+            {{ task.timing }}
 
             <span class="deleteIcon">
               <mat-icon>edit</mat-icon> &nbsp;&nbsp;
-              <mat-icon>delete</mat-icon>
-            </span>
-          </div>
-        </div>
-      </mat-list-option>
-
-      <mat-list-option>
-        <div class="row task">
-          <div class="col-lg-6">This is task number One</div>
-          <div class="col-lg-6 timing">
-            19 august 2021
-
-            <span class="deleteIcon">
-              <mat-icon>edit</mat-icon> &nbsp;&nbsp;
-              <mat-icon>delete</mat-icon>
+              <mat-icon (click)="clickDeleteTask(i)">delete</mat-icon>
             </span>
           </div>
         </div>

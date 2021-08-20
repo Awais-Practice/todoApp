@@ -1,7 +1,22 @@
-<p>
+<div class="imojiesContainerCover">
   <mat-form-field appearance="outline" style="width: 100%">
-    <mat-label>Please Add your task</mat-label>
-    <input matInput placeholder="Please Add Task" [(ngModel)]="inputValue" />
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-label>Please {{ task === "" ? "add" : "edit" }} your task</mat-label>
+    <input
+      matInput
+      placeholder="Please Add Task"
+      [(ngModel)]="inputValue"
+      (keydown.enter)="getTask()"
+    />
+
+    <mat-icon matSuffix (click)="emojisHideShow()"
+      >sentiment_very_satisfied</mat-icon
+    >
   </mat-form-field>
-</p>
+  <div id="emojisContainer">
+    <emoji-mart
+      (emojiClick)="addEmoji($event)"
+      title="Pick your emoji…"
+      emoji="point_up"
+    ></emoji-mart>
+  </div>
+</div>
