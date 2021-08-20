@@ -12,7 +12,11 @@ export class AppComponent {
   date = new Date().toISOString().slice(0, 10);
   myData: any = [];
   constructor(private sharedservice: SharedService) {
-    this.myData = this.sharedservice.myData;
+    // this.myData = this.sharedservice.myData;
+    const apiData = this.sharedservice
+      .getData()
+      .then((data) => (this.myData = data));
+    console.log(apiData);
   }
   createTask(event: any) {
     this.myData.unshift({
@@ -21,7 +25,6 @@ export class AppComponent {
     });
   }
   clickDeleteTask(index: any) {
-    alert(index);
     this.myData.splice(index, 1);
   }
 }
