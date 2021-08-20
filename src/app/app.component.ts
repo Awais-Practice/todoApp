@@ -12,7 +12,6 @@ export class AppComponent {
   date = new Date().toISOString().slice(0, 10);
   myData: any = [];
   constructor(private sharedservice: SharedService) {
-    // this.myData = this.sharedservice.myData;
     const apiData = this.sharedservice
       .getData()
       .then((data) => (this.myData = data));
