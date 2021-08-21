@@ -33,6 +33,7 @@ export class TaskInputComponent implements OnInit {
   }
 
   addTask() {
+    alert('hello');
     return this.onEnter.emit(this.inputValue);
 
     // this.inputValue = '';

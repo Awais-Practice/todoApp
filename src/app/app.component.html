@@ -18,7 +18,7 @@
 </mat-toolbar>
 <mat-card>
   <div class="container-fluid">
-    <app-task-input (getInputValue)="createTask($event)"> </app-task-input>
+    <app-task-input (onEnter)="createTask($event)"> </app-task-input>
   </div>
   <mat-selection-list [multiple]="false">
     <div class="container-fluid">
