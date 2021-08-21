@@ -31,11 +31,12 @@ export class AppComponent {
   clickDeleteTask(index: any) {
     this.myData.splice(index, 1);
   }
-  openDialog() {
+  openDialog(task: any) {
     const config: MatDialogConfig = {
       height: '400px',
       width: '600px',
       panelClass: 'myDialogStyle',
+      data: task,
     };
     this.dialog.open(EditTaskDialogComponent, config);
   }
