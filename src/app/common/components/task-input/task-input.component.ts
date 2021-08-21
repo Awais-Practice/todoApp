@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 @Component({
   selector: 'app-task-input',
   templateUrl: './task-input.component.html',
@@ -6,14 +6,18 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class TaskInputComponent implements OnInit {
   @Output() getInputValue = new EventEmitter<string>();
+  @Input() getInputData: any;
 
   inputValue = '';
-  task = '';
+
   emojisDisplay = false;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.getInputData);
+    this.inputValue = this.getInputData;
+  }
 
   emojisHideShow() {
     if (this.emojisDisplay == false) {

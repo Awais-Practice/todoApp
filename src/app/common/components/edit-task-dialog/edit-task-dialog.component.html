@@ -12,6 +12,9 @@
   </button>
 </mat-toolbar>
 <mat-card>
-  <app-task-input> </app-task-input>
-  {{ task.taskTitle }}
+  <app-task-input
+    (getInputValue)="editTask($event)"
+    [getInputData]="task.taskTitle"
+  >
+  </app-task-input>
 </mat-card>
