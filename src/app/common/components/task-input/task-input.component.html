@@ -7,7 +7,7 @@
       matInput
       placeholder="Please Add Task"
       [(ngModel)]="inputValue"
-      (keydown.enter)="getTask()"
+      (keydown.enter)="addTask()"
     />
 
     <mat-icon matSuffix (click)="emojisHideShow()"

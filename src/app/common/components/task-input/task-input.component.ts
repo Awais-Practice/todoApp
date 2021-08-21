@@ -5,7 +5,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./task-input.component.scss'],
 })
 export class TaskInputComponent implements OnInit {
-  @Output() getInputValue = new EventEmitter<string>();
+  @Output() onEnter = new EventEmitter<string>();
   @Input() getInputData: any;
 
   inputValue = '';
@@ -32,8 +32,8 @@ export class TaskInputComponent implements OnInit {
     emojisDisplay.style.display = 'none';
   }
 
-  getTask() {
-    return this.getInputValue.emit(this.inputValue);
+  addTask() {
+    return this.onEnter.emit(this.inputValue);
 
     // this.inputValue = '';
   }
