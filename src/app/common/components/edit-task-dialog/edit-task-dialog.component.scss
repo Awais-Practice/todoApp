@@ -1,3 +1,11 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+.save {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardStyle {
+  flex-grow: 1;
+}

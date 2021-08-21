@@ -21,12 +21,12 @@ export class AppComponent {
     console.log(apiData);
   }
   createTask(event: any) {
-    this.myData.unshift({
-      taskTitle: event,
-      timing: `Task created on: ${this.date}`,
-    });
-
-    console.log(event);
+    if (event.length > 0) {
+      this.myData.unshift({
+        taskTitle: event,
+        timing: `Task created on: ${this.date}`,
+      });
+    }
   }
   clickDeleteTask(index: any) {
     this.myData.splice(index, 1);

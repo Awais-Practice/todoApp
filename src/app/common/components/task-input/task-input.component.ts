@@ -15,7 +15,6 @@ export class TaskInputComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.getInputData);
     this.inputValue = this.getInputData;
   }
 

@@ -15,6 +15,6 @@ export class EditTaskDialogComponent implements OnInit {
 
   ngOnInit(): void {}
   editTask(event: any) {
-    console.log(event);
+    this.task.taskTitle = event;
   }
 }
