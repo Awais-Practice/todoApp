@@ -12,7 +12,10 @@
       >sentiment_very_satisfied</mat-icon
     >
   </mat-form-field>
-  <div id="emojisContainer">
+  <div
+    id="emojisContainer"
+    [ngStyle]="{ display: emojisDisplay ? 'block' : 'none' }"
+  >
     <emoji-mart
       (emojiClick)="addEmoji($event)"
       title="Pick your emoji…"
@@ -20,3 +23,5 @@
     ></emoji-mart>
   </div>
 </div>
+
+<!-- *ngIf="emojisDisplay ? true : false" -->

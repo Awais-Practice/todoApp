@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditTaskDialogComponent implements OnInit {
   title = 'Edit task ';
+
   constructor() {}
 
   ngOnInit(): void {}

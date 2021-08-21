@@ -9,18 +9,17 @@ export class TaskInputComponent implements OnInit {
 
   inputValue = '';
   task = '';
+  emojisDisplay = false;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   emojisHideShow() {
-    var emojisDisplay: any = document.getElementById('emojisContainer');
-
-    if (emojisDisplay.style.display === 'none') {
-      emojisDisplay.style.display = 'block';
+    if (this.emojisDisplay == false) {
+      this.emojisDisplay = true;
     } else {
-      emojisDisplay.style.display = 'none';
+      this.emojisDisplay = false;
     }
   }
 
