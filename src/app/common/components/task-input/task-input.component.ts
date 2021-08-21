@@ -32,5 +32,7 @@ export class TaskInputComponent implements OnInit {
 
   getTask() {
     return this.getInputValue.emit(this.inputValue);
+
+    // this.inputValue = '';
   }
 }
