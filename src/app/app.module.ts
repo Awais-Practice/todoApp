@@ -17,9 +17,15 @@ import { TaskInputComponent } from './common/components/task-input/task-input.co
 import { FormsModule } from '@angular/forms';
 import { SharedService } from 'src/shared/shared.service';
 import { EditTaskDialogComponent } from './common/components/edit-task-dialog/edit-task-dialog.component';
+import { DeleteTaskDialogComponent } from './common/components/delete-task-dialog/delete-task-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, TaskInputComponent, EditTaskDialogComponent],
+  declarations: [
+    AppComponent,
+    TaskInputComponent,
+    EditTaskDialogComponent,
+    DeleteTaskDialogComponent,
+  ],
   imports: [
     BrowserModule,
     PickerModule,
@@ -35,7 +41,7 @@ import { EditTaskDialogComponent } from './common/components/edit-task-dialog/ed
     MatListModule,
     MatDialogModule,
   ],
-  entryComponents: [EditTaskDialogComponent],
+  entryComponents: [EditTaskDialogComponent, DeleteTaskDialogComponent],
   providers: [SharedService],
   bootstrap: [AppComponent],
 })

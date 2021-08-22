@@ -30,11 +30,14 @@
 
             <span class="deleteIcon">
               <mat-icon (click)="openDialog(task)">edit</mat-icon> &nbsp;&nbsp;
-              <mat-icon (click)="clickDeleteTask(i)">delete</mat-icon>
+
+              <mat-icon (click)="deleteTaskDialog(task)">delete</mat-icon>
             </span>
           </div>
         </div>
       </mat-list-option>
     </div>
   </mat-selection-list>
+
+  {{ myDeleteTask | json }}
 </mat-card>

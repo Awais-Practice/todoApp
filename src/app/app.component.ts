@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { SharedService } from 'src/shared/shared.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditTaskDialogComponent } from './common/components/edit-task-dialog/edit-task-dialog.component';
+import { DeleteTaskDialogComponent } from './common/components/delete-task-dialog/delete-task-dialog.component';
 import { config } from 'rxjs';
 
 @Component({
@@ -14,6 +15,8 @@ export class AppComponent {
   title = 'My Todo App';
   date = new Date().toISOString().slice(0, 10);
   myData: any = [];
+  myDeleteTask: any;
+
   constructor(private sharedservice: SharedService, private dialog: MatDialog) {
     const apiData = this.sharedservice
       .getData()
@@ -28,9 +31,15 @@ export class AppComponent {
       });
     }
   }
-  clickDeleteTask(index: any) {
-    this.myData.splice(index, 1);
-  }
+
+  //
+
+  // deleteTaskDialogg() {
+  //   this.myData.splice(this.myDeleteTask, 1);
+  // }
+
+  //
+
   openDialog(task: any) {
     const config: MatDialogConfig = {
       height: '400px',
@@ -39,5 +48,17 @@ export class AppComponent {
       data: task,
     };
     this.dialog.open(EditTaskDialogComponent, config);
+  }
+  deleteTaskDialog(task: any) {
+    const config: MatDialogConfig = {
+      height: '180px',
+      width: '400px',
+      panelClass: 'myDialogStyle',
+      data: task,
+    };
+    this.dialog
+      .open(DeleteTaskDialogComponent, config)
+      .afterClosed()
+      .subscribe((taskTodelet) => this.myData.splice(taskTodelet, 1));
   }
 }

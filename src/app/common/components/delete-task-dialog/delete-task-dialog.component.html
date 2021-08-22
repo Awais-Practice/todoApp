@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <span>{{ title }}</span>
+  <span class="example-spacer"></span>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+    [mat-dialog-close]="true"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-card class="cardStyle">
+  <p>Are you sure you want to delete this task ?</p>
+  <div class="save">
+    <button mat-raised-button color="primary" mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="{task}">
+      Delete
+    </button>
+  </div>
+</mat-card>
