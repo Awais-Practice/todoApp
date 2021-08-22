@@ -1,10 +1,29 @@
 <mat-toolbar color="primary">
   <span>{{ title }}</span>
   <span class="example-spacer"></span>
+
+  <mat-form-field
+    appearance="outline"
+    *ngIf="searchInputDisplay == true ? true : false"
+  >
+    <mat-label>Search Task</mat-label>
+    <input
+      matInput
+      placeholder="Search Task"
+      [(ngModel)]="searchTask"
+      (keydown.enter)="searchTaskFromTasks()"
+    />
+    <mat-icon matSuffix (click)="openSearchInput()" style="cursor: pointer">
+      close</mat-icon
+    >
+  </mat-form-field>
+
   <button
     mat-icon-button
     class="example-icon favorite-icon"
     aria-label="Example icon-button with heart icon"
+    (click)="openSearchInput()"
+    *ngIf="searchInputDisplay ? false : true"
   >
     <mat-icon>search</mat-icon>
   </button>

@@ -14,6 +14,8 @@ export class AppComponent {
   date = new Date().toISOString().slice(0, 10);
   myData: any = [];
   myDeleteTask: any;
+  searchInputDisplay = false;
+  searchTask = '';
 
   constructor(private sharedservice: SharedService, private dialog: MatDialog) {
     const apiData = this.sharedservice
@@ -52,5 +54,26 @@ export class AppComponent {
       .subscribe((dialogResponse) => {
         if (dialogResponse == 'yes') this.myData.splice(task, 1);
       });
+  }
+  openSearchInput() {
+    if (this.searchInputDisplay == false) {
+      this.searchInputDisplay = true;
+    } else {
+      this.searchInputDisplay = false;
+    }
+  }
+
+  searchTaskFromTasks() {
+    this.myData.forEach((item: any) =>
+      console.log(
+        item.taskTitle.split(' ').forEach((word: any) => {
+          if (word == this.searchTask) {
+            this.myData == item;
+          }
+        })
+      )
+    );
+
+    // console.log(test);
   }
 }
