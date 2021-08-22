@@ -15,7 +15,8 @@ export class AppComponent {
   myData: any = [];
   myDeleteTask: any;
   searchInputDisplay = false;
-  searchTask = '';
+  searchKeywords = '';
+  searchResult: any = [];
 
   constructor(private sharedservice: SharedService, private dialog: MatDialog) {
     const apiData = this.sharedservice
@@ -63,17 +64,24 @@ export class AppComponent {
     }
   }
 
+  get data() {
+    if (this.searchResult.length > 0) {
+      return this.searchResult;
+    } else {
+      return this.myData;
+    }
+  }
+
   searchTaskFromTasks() {
+    this.searchResult = [];
     this.myData.forEach((item: any) =>
       console.log(
         item.taskTitle.split(' ').forEach((word: any) => {
-          if (word == this.searchTask) {
-            console.log(item);
+          if (word == this.searchKeywords) {
+            this.searchResult.push(item);
           }
         })
       )
     );
-
-    // console.log(test);
   }
 }
