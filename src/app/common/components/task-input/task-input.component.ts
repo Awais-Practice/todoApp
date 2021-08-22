@@ -35,7 +35,5 @@ export class TaskInputComponent implements OnInit {
   addTask() {
     this.onEnter.emit(this.inputValue);
     this.inputValue = '';
-
-    // this.inputValue = '';
   }
 }

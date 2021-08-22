@@ -1,10 +1,8 @@
-import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { Component } from '@angular/core';
 import { SharedService } from 'src/shared/shared.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditTaskDialogComponent } from './common/components/edit-task-dialog/edit-task-dialog.component';
 import { DeleteTaskDialogComponent } from './common/components/delete-task-dialog/delete-task-dialog.component';
-import { config } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -32,14 +30,6 @@ export class AppComponent {
     }
   }
 
-  //
-
-  // deleteTaskDialogg() {
-  //   this.myData.splice(this.myDeleteTask, 1);
-  // }
-
-  //
-
   openDialog(task: any) {
     const config: MatDialogConfig = {
       height: '400px',
@@ -59,6 +49,8 @@ export class AppComponent {
     this.dialog
       .open(DeleteTaskDialogComponent, config)
       .afterClosed()
-      .subscribe((taskTodelet) => this.myData.splice(taskTodelet, 1));
+      .subscribe((dialogResponse) => {
+        if (dialogResponse == 'yes') this.myData.splice(task, 1);
+      });
   }
 }

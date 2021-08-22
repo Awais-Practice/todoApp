@@ -1,7 +1,4 @@
-import { JsonPipe } from '@angular/common';
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { SharedService } from 'src/shared/shared.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-delete-task-dialog',
@@ -11,10 +8,7 @@ import { SharedService } from 'src/shared/shared.service';
 export class DeleteTaskDialogComponent implements OnInit {
   title = 'Delete Task';
 
-  constructor(
-    private dialog: MatDialogRef<DeleteTaskDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public task: any
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {}
 }
