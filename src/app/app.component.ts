@@ -68,7 +68,7 @@ export class AppComponent {
       console.log(
         item.taskTitle.split(' ').forEach((word: any) => {
           if (word == this.searchTask) {
-            this.myData == item;
+            console.log(item);
           }
         })
       )
