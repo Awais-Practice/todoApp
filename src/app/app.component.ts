@@ -42,7 +42,7 @@ export class AppComponent {
     };
     this.dialog.open(EditTaskDialogComponent, config);
   }
-  deleteTaskDialog(task: any) {
+  deleteTaskDialog(task: any, i: any) {
     const config: MatDialogConfig = {
       height: '180px',
       width: '400px',
@@ -53,7 +53,7 @@ export class AppComponent {
       .open(DeleteTaskDialogComponent, config)
       .afterClosed()
       .subscribe((dialogResponse) => {
-        if (dialogResponse == 'yes') this.tasks.splice(task, 1);
+        if (dialogResponse == 'yes') this.tasks.splice(i, 1);
       });
   }
   openSearchInput() {
