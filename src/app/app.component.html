@@ -9,6 +9,7 @@
     <mat-label>Search Task</mat-label>
     <input
       matInput
+      autofocus
       placeholder="Search Task"
       [(ngModel)]="searchKeywords"
       (keydown.enter)="searchTaskFromTasks()"

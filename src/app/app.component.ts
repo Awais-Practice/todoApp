@@ -12,7 +12,7 @@ import { DeleteTaskDialogComponent } from './common/components/delete-task-dialo
 export class AppComponent {
   title = 'My Todo App';
   date = new Date().toISOString().slice(0, 10);
-  myData: any = [];
+  tasks: any = [];
   myDeleteTask: any;
   searchInputDisplay = false;
   searchKeywords = '';
@@ -21,12 +21,12 @@ export class AppComponent {
   constructor(private sharedservice: SharedService, private dialog: MatDialog) {
     const apiData = this.sharedservice
       .getData()
-      .then((data) => (this.myData = data));
+      .then((data) => (this.tasks = data));
     console.log(apiData);
   }
   createTask(event: any) {
     if (event.length > 0) {
-      this.myData.unshift({
+      this.tasks.unshift({
         taskTitle: event,
         timing: `Task created on: ${this.date}`,
       });
@@ -53,7 +53,7 @@ export class AppComponent {
       .open(DeleteTaskDialogComponent, config)
       .afterClosed()
       .subscribe((dialogResponse) => {
-        if (dialogResponse == 'yes') this.myData.splice(task, 1);
+        if (dialogResponse == 'yes') this.tasks.splice(task, 1);
       });
   }
   openSearchInput() {
@@ -68,13 +68,13 @@ export class AppComponent {
     if (this.searchResult.length > 0) {
       return this.searchResult;
     } else {
-      return this.myData;
+      return this.tasks;
     }
   }
 
   searchTaskFromTasks() {
     this.searchResult = [];
-    this.myData.forEach((item: any) =>
+    this.tasks.forEach((item: any) =>
       console.log(
         item.taskTitle.split(' ').forEach((word: any) => {
           if (word == this.searchKeywords) {

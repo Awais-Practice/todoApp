@@ -27,7 +27,13 @@ export class TaskInputComponent implements OnInit {
   }
 
   addEmoji(event: any) {
-    this.inputValue = this.inputValue + event.emoji.native;
+    // this.inputValue = this.inputValue + event.emoji.native;
+
+    if (this.inputValue == undefined) {
+      this.inputValue = event.emoji.native;
+    } else {
+      this.inputValue = this.inputValue + event.emoji.native;
+    }
     var emojisDisplay: any = document.getElementById('emojisContainer');
     emojisDisplay.style.display = 'none';
   }
