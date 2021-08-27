@@ -26,10 +26,23 @@ export class AppComponent {
   }
   createTask(event: any) {
     if (event.length > 0) {
-      this.tasks.unshift({
-        taskTitle: event,
-        timing: `Task created on: ${this.date}`,
-      });
+      // taskTitle: event,
+      // timing: `Task created on: ${this.date}`,
+
+      fetch('http://1a86-58-65-212-56.ngrok.io/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          taskTitle: event,
+          timing: `Task created on: ${this.date}`,
+        }),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((response) => {
+          this.tasks.unshift(response);
+        });
     }
   }
 
@@ -42,20 +55,26 @@ export class AppComponent {
     };
     this.dialog.open(EditTaskDialogComponent, config);
   }
-  deleteTaskDialog(task: any, i: any) {
+  // this function is delete task
+
+  deleteTaskDialog(task: any) {
     const config: MatDialogConfig = {
       height: '180px',
       width: '400px',
       panelClass: 'myDialogStyle',
       data: task,
     };
+
     this.dialog
       .open(DeleteTaskDialogComponent, config)
       .afterClosed()
       .subscribe((dialogResponse) => {
-        if (dialogResponse == 'yes') this.tasks.splice(i, 1);
+        if (dialogResponse == 'yes') this.tasks.splice(task, 1);
       });
   }
+
+  // this function is delete task end
+
   openSearchInput() {
     if (this.searchInputDisplay == false) {
       this.searchInputDisplay = true;
@@ -85,3 +104,18 @@ export class AppComponent {
     );
   }
 }
+
+// fetch('http://1a86-58-65-212-56.ngrok.io/tasks', {
+//   method: 'POST',
+//   headers: { 'Content-Type': 'application/json' },
+//   body: JSON.stringify({
+//     taskTitle: 'ayyaz',
+//     timing: 'abc',
+//   }),
+// })
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((response) => {
+//     alert(JSON.stringify(response));
+//   });
