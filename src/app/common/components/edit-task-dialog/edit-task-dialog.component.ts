@@ -13,12 +13,23 @@ export class EditTaskDialogComponent implements OnInit {
 
   constructor(
     private dialog: MatDialogRef<EditTaskDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public task: { taskTitle: string; timing: string }
+    @Inject(MAT_DIALOG_DATA)
+    public task: { _id: number; taskTitle: string; timing: string }
   ) {}
 
   ngOnInit(): void {}
   editTask(taskTitle: any) {
+    const id = this.task._id;
     this.task.taskTitle = taskTitle;
+
+    fetch(`http://localhost:5000/tasks/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        taskTitle: taskTitle,
+      }),
+    });
+
     this.dialog.close();
   }
 }

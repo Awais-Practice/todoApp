@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedService } from 'src/shared/shared.service';
 import { EditTaskDialogComponent } from './common/components/edit-task-dialog/edit-task-dialog.component';
 import { DeleteTaskDialogComponent } from './common/components/delete-task-dialog/delete-task-dialog.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { DeleteTaskDialogComponent } from './common/components/delete-task-dialo
     FormsModule,
     MatListModule,
     MatDialogModule,
+    MatCheckboxModule,
   ],
   entryComponents: [EditTaskDialogComponent, DeleteTaskDialogComponent],
   providers: [SharedService],

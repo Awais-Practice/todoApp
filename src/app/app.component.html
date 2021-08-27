@@ -40,11 +40,18 @@
   <div class="container-fluid">
     <app-task-input (onEnter)="createTask($event)"> </app-task-input>
   </div>
+
   <mat-selection-list [multiple]="false">
     <div class="container-fluid">
       <mat-list-option *ngFor="let task of data; let i = index">
         <div class="row task">
-          <div class="col-lg-6">{{ task.taskTitle }}</div>
+          <div class="col-lg-6">
+            <mat-checkbox class="example-margin" [(ngModel)]="checked"
+              >Checked</mat-checkbox
+            >
+
+            {{ task.taskTitle }}
+          </div>
           <div class="col-lg-6 timing">
             {{ task.timing }}
 
