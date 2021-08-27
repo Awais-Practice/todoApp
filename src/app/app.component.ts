@@ -26,10 +26,9 @@ export class AppComponent {
   }
   createTask(event: any) {
     if (event.length > 0) {
-      // taskTitle: event,
-      // timing: `Task created on: ${this.date}`,
+      // Add task  db
 
-      fetch('http://1a86-58-65-212-56.ngrok.io/tasks', {
+      fetch('http://localhost:5000/tasks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -57,7 +56,8 @@ export class AppComponent {
   }
   // this function is delete task
 
-  deleteTaskDialog(task: any) {
+  deleteTaskDialog(task: any, i: any) {
+    const id = task._id;
     const config: MatDialogConfig = {
       height: '180px',
       width: '400px',
@@ -69,8 +69,12 @@ export class AppComponent {
       .open(DeleteTaskDialogComponent, config)
       .afterClosed()
       .subscribe((dialogResponse) => {
-        if (dialogResponse == 'yes') this.tasks.splice(task, 1);
+        if (dialogResponse == 'yes') this.tasks.splice(i, 1);
       });
+    // delete from db
+    fetch(`http://localhost:5000/tasks/${id}`, {
+      method: 'DELETE',
+    });
   }
 
   // this function is delete task end
