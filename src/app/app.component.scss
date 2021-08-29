@@ -32,3 +32,8 @@ mat-form-field {
 .example-margin {
   margin: 0 10px;
 }
+::ng-deep {
+  .mat-list-item-content {
+    flex-direction: row !important;
+  }
+}

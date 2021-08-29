@@ -18,14 +18,6 @@ export class AppComponent {
   searchKeywords = '';
   searchResult: any = [];
 
-  // check box code
-  checked = false;
-  indeterminate = false;
-  labelPosition: 'before' | 'after' = 'after';
-  disabled = false;
-
-  // check box code
-
   constructor(private sharedservice: SharedService, private dialog: MatDialog) {
     const apiData = this.sharedservice
       .getData()
@@ -116,18 +108,3 @@ export class AppComponent {
     );
   }
 }
-
-// fetch('http://1a86-58-65-212-56.ngrok.io/tasks', {
-//   method: 'POST',
-//   headers: { 'Content-Type': 'application/json' },
-//   body: JSON.stringify({
-//     taskTitle: 'ayyaz',
-//     timing: 'abc',
-//   }),
-// })
-//   .then((response) => {
-//     return response.json();
-//   })
-//   .then((response) => {
-//     alert(JSON.stringify(response));
-//   });
