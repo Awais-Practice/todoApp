@@ -17,6 +17,14 @@ export class AppComponent {
   searchInputDisplay = false;
   searchKeywords = '';
   searchResult: any = [];
+  controlAllTask = false;
+  // check Box code ts
+  checked = false;
+  indeterminate = false;
+  labelPosition: 'before' | 'after' = 'after';
+  disabled = false;
+
+  // check Box code ts
 
   constructor(private sharedservice: SharedService, private dialog: MatDialog) {
     const apiData = this.sharedservice
@@ -106,5 +114,13 @@ export class AppComponent {
         })
       )
     );
+  }
+
+  controlAllTaskSectionHideShow() {
+    if (this.controlAllTask == false) {
+      this.controlAllTask = true;
+    } else {
+      this.controlAllTask = false;
+    }
   }
 }

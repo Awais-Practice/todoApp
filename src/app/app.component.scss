@@ -37,3 +37,14 @@ mat-form-field {
     flex-direction: row !important;
   }
 }
+.controlAllTask {
+  border: 1px solid #ccc;
+  width: 98%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .col-lg-4 {
+    text-align: center;
+  }
+}
