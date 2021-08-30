@@ -3,6 +3,7 @@ import { SharedService } from 'src/shared/shared.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditTaskDialogComponent } from './common/components/edit-task-dialog/edit-task-dialog.component';
 import { DeleteTaskDialogComponent } from './common/components/delete-task-dialog/delete-task-dialog.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -37,7 +38,7 @@ export class AppComponent {
     if (event.length > 0) {
       // Add task  db
 
-      fetch('http://localhost:5000/tasks', {
+      fetch(`${environment.backendUrl}/tasks`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -81,7 +82,7 @@ export class AppComponent {
         if (dialogResponse == 'yes') this.tasks.splice(i, 1);
       });
     // delete from db
-    fetch(`http://localhost:5000/tasks/${id}`, {
+    fetch(`${environment.backendUrl}/tasks/${id}`, {
       method: 'DELETE',
     });
   }

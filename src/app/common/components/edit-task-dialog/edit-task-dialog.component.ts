@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { environment } from 'src/environments/environment';
 import { TaskInputComponent } from '../task-input/task-input.component';
 
 @Component({
@@ -22,7 +23,7 @@ export class EditTaskDialogComponent implements OnInit {
     const id = this.task._id;
     this.task.taskTitle = taskTitle;
 
-    fetch(`http://localhost:5000/tasks/${id}`, {
+    fetch(`${environment.backendUrl}/tasks/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
