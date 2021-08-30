@@ -18,6 +18,7 @@ export class AppComponent {
   searchKeywords = '';
   searchResult: any = [];
   controlAllTask = false;
+  value: any;
   // check Box code ts
   checked = false;
   indeterminate = false;
@@ -97,6 +98,7 @@ export class AppComponent {
 
   get data() {
     if (this.searchResult.length > 0) {
+      this.checked == true;
       return this.searchResult;
     } else {
       return this.tasks;
@@ -115,12 +117,23 @@ export class AppComponent {
       )
     );
   }
-
-  controlAllTaskSectionHideShow() {
-    if (this.controlAllTask == false) {
+  selectedTasks = [];
+  controlAllTaskSectionHideShow(event: any) {
+    if (this.value.length > 0) {
       this.controlAllTask = true;
     } else {
       this.controlAllTask = false;
     }
+    this.selectedTasks = this.value;
+  }
+
+  selectAllCheckbox(obj: any) {
+    console.log(this.selectedTasks);
+  }
+
+  deleteAllSelectedTasks() {
+    this.selectedTasks ==
+      this.selectedTasks.splice(0, this.selectedTasks.length);
+    console.log(this.selectedTasks);
   }
 }

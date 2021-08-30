@@ -53,20 +53,33 @@
           [(indeterminate)]="indeterminate"
           [labelPosition]="labelPosition"
           [disabled]="disabled"
+          (click)="selectAllCheckbox(shoes)"
         >
           Selecte all task
         </mat-checkbox>
       </div>
-      <div class="col-lg-4">Selected Task</div>
-      <div class="col-lg-4">Delete all selected task</div>
+      <div class="col-lg-4">
+        Selected Task {{ shoes.selectedOptions.selected.length }}
+      </div>
+      <div class="col-lg-4">
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="deleteAllSelectedTasks()"
+        >
+          Delete all selected task
+        </button>
+      </div>
     </div>
   </div>
   <mat-selection-list
     [multiple]="true"
-    (click)="controlAllTaskSectionHideShow()"
+    #shoes
+    (selectionChange)="controlAllTaskSectionHideShow($event)"
+    [(ngModel)]="value"
   >
     <div class="container-fluid">
-      <mat-list-option *ngFor="let task of data; let i = index">
+      <mat-list-option *ngFor="let task of data; let i = index" [value]="task">
         <div class="row task">
           <div class="col-lg-6">
             {{ task.taskTitle }}
@@ -84,6 +97,4 @@
       </mat-list-option>
     </div>
   </mat-selection-list>
-
-  {{ myDeleteTask | json }}
 </mat-card>
