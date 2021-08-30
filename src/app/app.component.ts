@@ -119,14 +119,16 @@ export class AppComponent {
   }
   selectedTasks = [];
   controlAllTaskSectionHideShow() {
-    if (this.value.length > 0) {
+    if (this.value.length == this.tasks.length) {
+      this.checked = true;
     } else {
+      this.checked = false;
     }
     this.selectedTasks = this.value;
   }
 
-  selectAllCheckbox(obj: any) {
-    console.log(this.selectedTasks);
+  selectAllCheckbox(value: any) {
+    this.value = value.checked === true ? this.tasks : [];
   }
 
   deleteAllSelectedTasks() {

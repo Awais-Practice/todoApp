@@ -50,7 +50,7 @@
           [(indeterminate)]="indeterminate"
           [labelPosition]="labelPosition"
           [disabled]="disabled"
-          (click)="selectAllCheckbox(shoes)"
+          (change)="selectAllCheckbox($event)"
         >
           Selecte all task
         </mat-checkbox>
