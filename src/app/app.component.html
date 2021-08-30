@@ -41,10 +41,7 @@
   <div class="container-fluid">
     <app-task-input (onEnter)="createTask($event)"> </app-task-input>
   </div>
-  <div
-    class="container-fluid controlAllTask"
-    *ngIf="controlAllTask == true ? true : false"
-  >
+  <div class="container-fluid controlAllTask">
     <div class="row">
       <div class="col-lg-4">
         <mat-checkbox
@@ -75,7 +72,7 @@
   <mat-selection-list
     [multiple]="true"
     #shoes
-    (selectionChange)="controlAllTaskSectionHideShow($event)"
+    (selectionChange)="controlAllTaskSectionHideShow()"
     [(ngModel)]="value"
   >
     <div class="container-fluid">

@@ -18,7 +18,6 @@ export class AppComponent {
   searchInputDisplay = false;
   searchKeywords = '';
   searchResult: any = [];
-  controlAllTask = false;
   value: any;
   // check Box code ts
   checked = false;
@@ -119,11 +118,9 @@ export class AppComponent {
     );
   }
   selectedTasks = [];
-  controlAllTaskSectionHideShow(event: any) {
+  controlAllTaskSectionHideShow() {
     if (this.value.length > 0) {
-      this.controlAllTask = true;
     } else {
-      this.controlAllTask = false;
     }
     this.selectedTasks = this.value;
   }
