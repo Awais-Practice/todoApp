@@ -132,8 +132,13 @@ export class AppComponent {
   }
 
   deleteAllSelectedTasks() {
-    this.selectedTasks ==
-      this.selectedTasks.splice(0, this.selectedTasks.length);
-    console.log(this.selectedTasks);
+    if (this.value) {
+      for (var i = 0; i < this.value.length; i++) {
+        // console.log(this.value[i]._id);
+        fetch(`${environment.backendUrl}/tasks/${this.value[i]._id}`, {
+          method: 'DELETE',
+        });
+      }
+    }
   }
 }
