@@ -28,10 +28,7 @@ export class AppComponent {
   // check Box code ts
 
   constructor(private sharedservice: SharedService, private dialog: MatDialog) {
-    const apiData = this.sharedservice
-      .getData()
-      .then((data) => (this.tasks = data));
-    console.log(apiData);
+    this.sharedservice.getData().then((data) => (this.tasks = data));
   }
   createTask(event: any) {
     if (event.length > 0) {
@@ -106,17 +103,17 @@ export class AppComponent {
   }
 
   searchTaskFromTasks() {
-    this.searchResult = [];
-    this.tasks.forEach((item: any) =>
-      console.log(
+    if (this.searchKeywords) {
+      this.tasks.forEach((item: any) =>
         item.taskTitle.split(' ').forEach((word: any) => {
-          if (word == this.searchKeywords) {
-            this.searchResult.push(item);
+          if (this.searchKeywords == word) {
+            return this.searchResult.push(item);
           }
         })
-      )
-    );
+      );
+    }
   }
+
   selectedTasks = [];
   controlAllTaskSectionHideShow() {
     if (this.value.length == this.tasks.length) {
@@ -133,7 +130,7 @@ export class AppComponent {
 
   deleteAllSelectedTasks() {
     if (this.value) {
-      for (var i = 0; i < this.value.length; i++) {
+      for (var i = 0; i <= this.value.length; i++) {
         // console.log(this.value[i]._id);
         fetch(`${environment.backendUrl}/tasks/${this.value[i]._id}`, {
           method: 'DELETE',
