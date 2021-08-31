@@ -138,6 +138,8 @@ export class AppComponent {
         fetch(`${environment.backendUrl}/tasks/${this.value[i]._id}`, {
           method: 'DELETE',
         });
+
+        this.sharedservice.getData().then((data) => (this.tasks = data));
       }
     }
   }
