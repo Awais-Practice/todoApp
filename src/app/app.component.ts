@@ -112,6 +112,9 @@ export class AppComponent {
         })
       );
     }
+    if (this.searchKeywords.length == 0) {
+      alert('awais');
+    }
   }
 
   selectedTasks = [];
@@ -129,15 +132,12 @@ export class AppComponent {
   }
 
   deleteAllSelectedTasks() {
-    if (this.value) {
-      for (var i = 0; i <= this.value.length; i++) {
-        // console.log(this.value[i]._id);
-        fetch(`${environment.backendUrl}/tasks/${this.value[i]._id}`, {
-          method: 'DELETE',
-        });
+    for (var i = 0; i <= this.value.length; i++) {
+      fetch(`${environment.backendUrl}/tasks/${this.value[i]._id}`, {
+        method: 'DELETE',
+      });
 
-        this.sharedservice.getData().then((data) => (this.tasks = data));
-      }
+      this.sharedservice.getData().then((data) => (this.tasks = data));
     }
   }
 }
