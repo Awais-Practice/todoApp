@@ -82,7 +82,7 @@
             {{ task.taskTitle }}
           </div>
           <div class="col-lg-6 timing">
-            {{ task.timing }}
+            {{ moment(task.timing).fromNow() }}
 
             <span class="deleteIcon">
               <mat-icon (click)="openDialog(task)">edit</mat-icon> &nbsp;&nbsp;

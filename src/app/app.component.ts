@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditTaskDialogComponent } from './common/components/edit-task-dialog/edit-task-dialog.component';
 import { DeleteTaskDialogComponent } from './common/components/delete-task-dialog/delete-task-dialog.component';
 import { environment } from 'src/environments/environment';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,12 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
   title = 'My Todo App';
-  date = new Date().toISOString().slice(0, 10);
+  date = new Date();
   tasks: any = [];
   myDeleteTask: any;
   searchInputDisplay = false;
+  moment: typeof moment = moment;
+
   searchKeywords = '';
   searchResult: any = [];
   value: any;
@@ -39,7 +42,7 @@ export class AppComponent {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           taskTitle: event,
-          timing: `Task created on: ${this.date}`,
+          timing: this.date,
         }),
       })
         .then((response) => {
