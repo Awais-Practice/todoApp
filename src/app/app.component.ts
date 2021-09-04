@@ -18,21 +18,28 @@ export class AppComponent {
   myDeleteTask: any;
   searchInputDisplay = false;
   moment: typeof moment = moment;
-
+  taskStatus: any;
   searchKeywords = '';
   searchResult: any = [];
   value: any;
+  getValues: any;
   // check Box code ts
   checked = false;
   indeterminate = false;
   labelPosition: 'before' | 'after' = 'after';
   disabled = false;
+  test: any;
 
   // check Box code ts
 
   constructor(private sharedservice: SharedService, private dialog: MatDialog) {
+    this.getTasks();
+  }
+
+  getTasks() {
     this.sharedservice.getData().then((data) => (this.tasks = data));
   }
+
   createTask(event: any) {
     if (event.length > 0) {
       // Add task  db
@@ -43,6 +50,7 @@ export class AppComponent {
         body: JSON.stringify({
           taskTitle: event,
           timing: this.date,
+          isCompleted: false,
         }),
       })
         .then((response) => {
@@ -141,6 +149,19 @@ export class AppComponent {
       });
 
       this.sharedservice.getData().then((data) => (this.tasks = data));
+    }
+  }
+
+  taskStatusCheck(event: any, task: any) {
+    fetch(`${environment.backendUrl}/tasks/${task._id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        isCompleted: event.checked,
+      }),
+    });
+    if (task.isCompleted == true) {
+      event.checked == true;
     }
   }
 }
