@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'https://todotaskbackendapp.herokuapp.com/tasks',
+  backendUrl: 'http://localhost:5000',
 };
 
 /*

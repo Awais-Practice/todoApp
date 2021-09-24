@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendUrl: 'http://localhost:5000',
+  backendUrl: 'https://todotaskbackendapp.herokuapp.com/tasks',
 };
