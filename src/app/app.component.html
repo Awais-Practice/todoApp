@@ -101,7 +101,18 @@
               </mat-checkbox>
             </div>
             <span class="deleteIcon">
-              <mat-icon (click)="openDialog(task)">edit</mat-icon> &nbsp;&nbsp;
+              <mat-icon
+                (click)="openDialog(task)"
+                (click)="$event.stopImmediatePropagation()"
+                >edit</mat-icon
+              >
+              &nbsp;&nbsp;
+
+              <mat-icon
+                (click)="copyTask(task)"
+                (click)="$event.stopImmediatePropagation()"
+                >file_copy</mat-icon
+              >&nbsp;&nbsp;
 
               <mat-icon (click)="deleteTaskDialog(task, i)">delete</mat-icon>
             </span>

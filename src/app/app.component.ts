@@ -164,4 +164,7 @@ export class AppComponent {
       event.checked == true;
     }
   }
+  copyTask(task: any) {
+    alert(task._id);
+  }
 }
